@@ -63,6 +63,7 @@
         {
             public static class StatusIndicatorStateService
             {
+                public const string NewActivityPrefix = "StatusIndicatorStateService: Added NewActivity";                
                 public const string Prefix = "StatusIndicatorStateService: Added";
                 public const string Available = "Available";
                 public const string AvailableNewActivity = "NewActivity (current state: Available -> NewActivity";
@@ -87,6 +88,7 @@
 
             public static class OverlayIcon
             {
+                public const string NewActivity = "Setting the taskbar overlay icon - New activity";
                 public const string Prefix = "Setting the taskbar overlay icon -";
                 public const string BusyIcon = "Busy";
                 public const string OnThePhoneIcon = "On the phone";

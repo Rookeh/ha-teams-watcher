@@ -28,8 +28,13 @@ Currently, this service only supports two authentication schemes:
 * None (only recommended if you do not expose your HA instance to the internet.)
 * Basic (you will be prompted for credentials when you start the service.)
 
-## How do I configure Home Assistant to listen for updates from this service?
+## I run Teams on MacOS / Linux, is this supported?
+I have not tested this in a non-Windows environment, however, as long as the format of the Teams log file is the same, there is no reason why this should not work.
 
+## I have a non-English Teams installation, is this supported?
+Not at the moment, however I will look into implementing user-customizable localisation of internal Teams statuses to check for.
+
+## How do I configure Home Assistant to listen for updates from this service?
 First, you will need some input text entities to hold the status and icon fields provided by the service:
 
 ```yaml
@@ -76,5 +81,3 @@ Finally, you will need to update the appSettings.json file with the full URL to 
     }
   }
 ```
-## I have a non-English Teams installation, will this still work?
-Not at the moment, however I will look into implementing user-customizable translations soon.
