@@ -54,24 +54,25 @@ template:
       state: "{{states('input_text.teams_status')}}"
       icon: "{{states('input_text.teams_icon')}}"    
 ```
-Then, you will need to create a webhook to update the input text entities with the status provided by the service:
+Then, you will need to create an automation that listens on a webhook, and updates the input text entities with the status provided by the service:
 ```yaml
-alias: Update Teams Presence
-description: ''
-trigger:
-  - platform: webhook
-    webhook_id: <generate a random ID>
-condition: []
-action:
-  - service: input_text.set_value
-    data:
-      entity_id: input_text.teams_status
-      value: '{{ trigger.json.name }}'
-  - service: input_text.set_value
-    data:
-      entity_id: input_text.teams_icon
-      value: '{{ trigger.json.icon }}'
-mode: single
+automation:
+  - alias: Update Teams Presence
+    description: ''
+    trigger:
+      - platform: webhook
+        webhook_id: <generate a random ID>
+    condition: []
+    action:
+      - service: input_text.set_value
+        data:
+          entity_id: input_text.teams_status
+          value: '{{ trigger.json.name }}'
+      - service: input_text.set_value
+        data:
+          entity_id: input_text.teams_icon
+          value: '{{ trigger.json.icon }}'
+    mode: single
 ```
 Finally, you will need to update the appSettings.json file with the full URL to your new webhook, and an authentication scheme to use:
 ```json
