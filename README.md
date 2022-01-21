@@ -14,7 +14,7 @@ Or basically anything else you can think of.
 ## How?
 Although it is possible to poll for Teams presence updates via the [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/use-the-api), not all organisations have enabled this feature, hence this service will instead periodically check the local Teams log file for presence updates. As such, it should run locally on the same device that you are using for Teams.
 
-**Note:** If you are using Teams for work purposes, bear in mind that depending on individual company policy, you may not be permitted to install unapproved software on your corporate device. If in doubt, check in with your local friendly IT department. I take no responsibility for users deploying this tool in an unauthorized environment. :)
+**Note:** If you are using Teams for work purposes, bear in mind that depending on individual company policy, you may not be permitted to install unapproved software on your corporate device. If in doubt, check in with your local friendly IT department. I take no responsibility for users deploying this service in an unauthorized environment. :)
 
 ## Can I configure a custom name or icon for each status to send to Home Assistant?
 Absolutely! Check the default status mappings in `appSettings.json` to see how this works.
