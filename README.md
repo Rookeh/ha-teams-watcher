@@ -74,7 +74,7 @@ automation:
           value: '{{ trigger.json.icon }}'
     mode: single
 ```
-Finally, you will need to update the appSettings.json file with the full URL to your new webhook, and an authentication scheme to use:
+Finally, you will need to update the `appSettings.json` file with the full URL to your new webhook, and an authentication scheme to use:
 ```json
   "HomeAssistant": {
     "WebHookUrl": "https://your-ha-instance.duckdns.org/api/webhook/your-webhook-id",
