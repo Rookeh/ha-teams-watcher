@@ -29,7 +29,7 @@ Currently, this service only supports two authentication schemes:
 * Basic (you will be prompted for credentials when you start the service.)
 
 ## I run Teams on MacOS / Linux, is this supported?
-I have not tested this in a non-Windows environment, however, as long as the format of the Teams log file is the same, there is no reason why this should not work.
+I have not tested this in a non-Windows environment, however, as long as the format of the Teams log file is the same, and you update the path to the log file in `appSettings.json`, there is no reason why this should not work.
 
 ## I have a non-English Teams installation, is this supported?
 Not at the moment, however I will look into implementing user-customizable localisation of internal Teams statuses to check for.
