@@ -38,12 +38,13 @@ Not at the moment, however I will look into implementing user-customizable local
 First, you will need some input text entities to hold the status and icon fields provided by the service:
 
 ```yaml
-teams_status:
-  name: Microsoft Teams status
-  icon: mdi:microsoft-teams
-teams_icon:
-  name: Microsoft Teams status icon
-  icon: mdi:microsoft-teams
+input_text:
+  teams_status:
+    name: Microsoft Teams status
+    icon: mdi:microsoft-teams
+  teams_icon:
+    name: Microsoft Teams status icon
+    icon: mdi:microsoft-teams
 ```
 Second, a template sensor to pull the status text and icon into a single entity:
 ```yaml
