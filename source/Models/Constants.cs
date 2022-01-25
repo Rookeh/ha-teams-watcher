@@ -80,7 +80,7 @@
                 public const string Focusing = "Focusing";
                 public const string FocusingNewActivity = "NewActivity (current state: Focusing -> NewActivity";
                 public const string Presenting = "Presenting";
-                public const string PresentingNewActivity = "SNewActivity (current state: Presenting -> NewActivity";
+                public const string PresentingNewActivity = "NewActivity (current state: Presenting -> NewActivity";
                 public const string InAMeeting = "InAMeeting";
                 public const string InAMeetingNewActivity = "NewActivity (current state: InAMeeting -> NewActivity";
                 public const string Offline = "Offline";
@@ -99,7 +99,6 @@
                 public const string FocusingIcon = "Focusing";
                 public const string InAMeeting = "In a meeting";
                 public const string OfflineIcon = "Offline";
-                public const string NotInACallIcon = "Not in a call";
                 public const string InACallIcon = "In a call";
             }
         }

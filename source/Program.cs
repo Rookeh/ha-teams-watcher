@@ -18,9 +18,11 @@ namespace HaTeamsWatcher
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddSingleton<IHttpClient, HttpClientWrapper>();
+                    services.AddSingleton<IConsole, ConsoleWrapper>();
                     services.AddSingleton<IAuthenticationService, AuthenticationService>();
                     services.AddSingleton<IHomeAssistantService, HomeAssistantService>();
                     services.AddSingleton<IHomeAssistantStatusMapper, HomeAssistantStatusMapper>();
+                    services.AddSingleton<IFile, FileWrapper>();
                     services.AddSingleton<ITeamsStatusService, TeamsStatusService>();
                     services.AddHostedService<Worker>();
                 });

@@ -10,17 +10,17 @@ namespace HaTeamsWatcher.Services
     public class TeamsStatusService : ITeamsStatusService
     {
         private readonly IConfiguration _config;
+        private readonly IFile _file;
 
-        public TeamsStatusService(IConfiguration config)
+        public TeamsStatusService(IConfiguration config, IFile file)
         {
             _config = config;
+            _file = file;
         }
 
         public TeamsStatus GetCurrentStatus()
         {
-            var logFilePath = _config.GetSection(Constants.Configuration.Teams.SectionName)
-                .GetValue<string>(Constants.Configuration.Teams.LogFile);
-
+            var logFilePath = _config.GetValue<string>($"{Constants.Configuration.Teams.SectionName}:{Constants.Configuration.Teams.LogFile}");
             var logFileContent = GetLogFileContent(logFilePath);
 
             var lastStatusUpdate = logFileContent.LastOrDefault(l => (l.Contains(Constants.Teams.StatusIndicatorStateService.Prefix) && !l.Contains(Constants.Teams.StatusIndicatorStateService.NewActivityPrefix))
@@ -36,6 +36,7 @@ namespace HaTeamsWatcher.Services
                     return TeamsStatus.Busy;
                 case string onThePhone when onThePhone.Contains(Constants.Teams.StatusIndicatorStateService.OnThePhone):
                 case string onPhoneIcon when onPhoneIcon.Contains(Constants.Teams.OverlayIcon.OnThePhoneIcon):
+                case string inACallIcon when inACallIcon.Contains(Constants.Teams.OverlayIcon.InACallIcon):
                     return TeamsStatus.OnACall;
                 case string away when away.Contains(Constants.Teams.StatusIndicatorStateService.Away):
                 case string awayIcon when awayIcon.Contains(Constants.Teams.OverlayIcon.AwayIcon):
@@ -63,10 +64,10 @@ namespace HaTeamsWatcher.Services
             }
         }
 
-        private static List<string> GetLogFileContent(string logFilePath)
+        private List<string> GetLogFileContent(string logFilePath)
         {
             var logFileContent = new List<string>();
-            using (var stream = File.Open(logFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var stream = _file.Open(logFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (var reader = new StreamReader(stream))
             {
                 string line;

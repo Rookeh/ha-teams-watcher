@@ -8,6 +8,13 @@ namespace HaTeamsWatcher.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
+        private readonly IConsole _console;
+
+        public AuthenticationService(IConsole console)
+        {
+            _console = console;
+        }
+
         public AuthenticationHeaderValue GetAuthenticationHeaderValue(string scheme)
         {
             switch (scheme)
@@ -23,13 +30,13 @@ namespace HaTeamsWatcher.Services
 
         private AuthenticationHeaderValue BuildBasicAuthHeaderValue()
         {
-            Console.WriteLine("Basic Auth - Username:");
-            var username = Console.ReadLine();
-            Console.WriteLine("Basic Auth - Password:");
+            _console.WriteLine("Basic Auth - Username:");
+            var username = _console.ReadLine();
+            _console.WriteLine("Basic Auth - Password:");
             string password = string.Empty;
             while (true)
             {
-                var key = Console.ReadKey(true);
+                var key = _console.ReadKey(true);
                 if (key.Key == ConsoleKey.Enter)
                 {
                     break;

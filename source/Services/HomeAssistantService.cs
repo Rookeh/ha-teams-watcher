@@ -19,19 +19,17 @@ namespace HaTeamsWatcher.Services
             _config = config;
             _httpClient = httpClient;
             _logger = logger;
-            var authScheme = _config.GetSection(Constants.Configuration.HomeAssistant.SectionName)
-                .GetSection(Constants.Configuration.HomeAssistant.Authentication.SectionName)
-                .GetValue<string>(Constants.Configuration.HomeAssistant.Authentication.Scheme);
+            var authScheme = _config.GetValue<string>($"{Constants.Configuration.HomeAssistant.SectionName}:{Constants.Configuration.HomeAssistant.Authentication.SectionName}:{Constants.Configuration.HomeAssistant.Authentication.Scheme}");
             _httpClient.DefaultRequestHeaders.Authorization = authService.GetAuthenticationHeaderValue(authScheme);
         }
 
         public async Task<bool> Update(HomeAssistantStatus status)
         {
-            var webhookUrl = _config.GetSection(Constants.Configuration.HomeAssistant.SectionName).GetValue<string>(Constants.Configuration.HomeAssistant.WebHookUrl);
-            var webhookRequest = new HttpRequestMessage(HttpMethod.Post, webhookUrl);
-            webhookRequest.Content = JsonContent.Create(status);
+            var webHookUrl = _config.GetValue<string>($"{Constants.Configuration.HomeAssistant.SectionName}:{Constants.Configuration.HomeAssistant.WebHookUrl}");
+            var webHookRequest = new HttpRequestMessage(HttpMethod.Post, webHookUrl);
+            webHookRequest.Content = JsonContent.Create(status);
 
-            var response = await _httpClient.SendAsync(webhookRequest);
+            var response = await _httpClient.SendAsync(webHookRequest);
 
             if (response.IsSuccessStatusCode)
             {
