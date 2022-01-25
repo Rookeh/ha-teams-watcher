@@ -8,6 +8,7 @@ So that you can do cool stuff in HA based on Teams presence. For example:
  - Turn on a warning light outside your office when you join a call.
  - Start the coffee machine at the end of a meeting.
  - Mute notifications if you are set to Do not Disturb.
+ - Send a Wake on LAN packet to a device when you log off Teams for the day.
 
 Or basically anything else you can think of.
 
