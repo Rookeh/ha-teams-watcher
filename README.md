@@ -23,11 +23,13 @@ Absolutely! Check the default status mappings in `appSettings.json` to see how t
 ## Can I listen for presence updates from another user?
 No, this will only generate updates when your own status changes.
 
-## My Home Assistant instance is locked down, how do I authenticate against it?
-Currently, this service only supports two authentication schemes: 
+## My Home Assistant instance sits behind a reverse proxy, how do I authenticate against it?
+Currently, this service only supports two proxy authentication schemes: 
 
-* None (only recommended if you do not expose your HA instance to the internet.)
-* Basic (you will be prompted for credentials when you start the service.)
+* None (default; use this if you are integrating with a HA instance on your local network, not using a reverse proxy.)
+* Basic (you will be prompted for your reverse proxy credentials when you start the service.)
+
+Support for other authentication schemes (e.g. token-based) is something I might look into in the future.
 
 ## I run Teams on MacOS / Linux, is this supported?
 I have not tested this in a non-Windows environment. However, as long as the format of the Teams log file is the same, and you update the path to the log file in `appSettings.json` to the correct value for your platform, there is no reason why this should not work.
